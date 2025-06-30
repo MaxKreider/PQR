@@ -32,13 +32,10 @@ Y = (0:dt:2*pi)';
 %Y = X';
 
 %system parameters
-D = .01;
-omega = 1;
-epsilon = .2;
-alpha = .5;
-%beta = .5; % for alpha=beta we don't see a strong effect :-(
-beta=1;
- 
+%D = .01; omega = 1; epsilon = .2; alpha = .5; beta = .5; % for these params we don't see a strong effect :-(
+%D = .01; omega = 1; epsilon = .2; alpha = 1; beta = 1; % for these params 
+D = .01; omega = 1; epsilon = 1; alpha = 1; beta = 1; % for these params, we get a double peak for pp=7 or phi(pp)=0.9425
+
 %cycle through phase offset
 %phi = linspace(0,2*pi,3); % for debugging
 phi = linspace(0,2*pi,41); % for a finer mesh
@@ -230,7 +227,7 @@ for pp=1:2:length(phi)
     plot(TTT,pp+alpha*sin(TTT + phi(pp)) + beta*sin(2*TTT))
     hold on
     subplot(1,2,2)
-    plot(TTT,pp+JJJ(pp,:))
+    plot(TTT,pp+10*JJJ(pp,:))
     hold on
 end
 subplot(1,2,1)
